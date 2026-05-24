@@ -2,12 +2,44 @@
 
 API REST para automação de email marketing integrando **Brevo**, **Make** e **ClickUp**.
 
+🔗 **Deploy:** [https://email-marketing-automacao.vercel.app](https://email-marketing-automacao.vercel.app)
+
 ## Tecnologias
 
 - Node.js + Express
 - Brevo (Sendinblue) API v3
 - Axios
 - dotenv
+
+## Arquitetura
+
+Fluxo completo da automação:
+
+```
+Make (trigger)
+      │
+      ▼
+POST /api/webhook/campaign-trigger
+      │
+      ▼
+Valida dados + busca/cria contato no Brevo
+      │
+      ▼
+Envia e-mail via template (Brevo API v3)
+      │
+      ▼
+Registra tarefa de acompanhamento no ClickUp (opcional)
+      │
+      ▼
+Retorna status da campanha (sucesso/erro)
+```
+
+**Fluxos disponíveis:**
+
+- **Captação de leads:** `POST /api/subscribe` — adiciona contato à lista do Brevo
+- **Disparo de campanha:** `POST /api/send-campaign` — envia e-mail via template
+- **Webhook Make:** `POST /api/webhook/campaign-trigger` — ponto de entrada para automações externas
+- **Listagem de templates:** `GET /api/templates` — consulta templates ativos no Brevo
 
 ## Instalação
 
