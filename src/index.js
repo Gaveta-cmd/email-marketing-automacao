@@ -252,7 +252,11 @@ app.get('/', (req, res) => {
 // START SERVER
 // ============================================
 
-app.listen(PORT, () => {
-  console.log(`✓ Servidor rodando em http://localhost:${PORT}`);
-  console.log(`✓ Documentação em http://localhost:${PORT}`);
-});
+if (process.env.VERCEL !== '1') {
+  app.listen(PORT, () => {
+    console.log(`✓ Servidor rodando em http://localhost:${PORT}`);
+    console.log(`✓ Documentação em http://localhost:${PORT}`);
+  });
+}
+
+export default app;
