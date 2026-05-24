@@ -49,6 +49,14 @@ npm install
 
 ## Configuração
 
+### Variáveis de Ambiente
+
+| Variável | Obrigatória | Descrição |
+|----------|-------------|-----------|
+| `BREVO_API_KEY` | Sim | Chave de API do Brevo (Sendinblue) |
+| `CLICKUP_API_KEY` | Não | Chave de API do ClickUp para registro de tarefas |
+| `PORT` | Não | Porta do servidor (padrão: 3000) |
+
 Crie um arquivo `.env` na raiz do projeto:
 
 ```env
@@ -56,6 +64,12 @@ BREVO_API_KEY=sua_chave_aqui
 CLICKUP_API_KEY=sua_chave_aqui
 PORT=8000
 ```
+
+### Deploy na Vercel
+
+1. Conecte o repositório na [Vercel](https://vercel.com)
+2. Adicione as variáveis de ambiente no painel **Settings → Environment Variables**
+3. O arquivo `vercel.json` já configura o roteamento automaticamente
 
 ## Uso
 
